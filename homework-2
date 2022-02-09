@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>eShop</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-wrap container ">
+            <div class="logo">E-SHOP</div>
+            <button class="cart-button " type="button">Корзина</button>
+        </div>
+
+    </header>
+    <main>
+        <div class="goods-wrp container">
+            <div class="goods-list"></div>
+        </div>
+
+    </main>
+
+
+
+    <script src="homework2.js"></script>
+
+</body>
+
+</html>
+'use strict'
+
+class GoodsItem {   // создаем клас товаров
+    constructor(title, price) {
+        this.title = title;
+        this.price = price;
+    }
+    render() {      // метод возвращает разметку 
+        return `<div class="goods-item">
+    <img src="img/goods2.jpg"<br>
+    <h3>${this.title}</h3>
+    <p>${this.price}</p>
+    <button class="cart-button">Купить</button>
+    </div>`;
+    }
+}
+
+class GoodsList {   // список товаров 
+    constructor() {
+        this.goods = [];
+    }
+    fetсhGoods() {   //метод заполнения списка
+        this.goods = [
+            { title: 'Notebook', price: 2000 },
+            { title: 'Mouse', price: 20 },
+            { title: 'Keyboard', price: 200 },
+            { title: 'Gamepad', price: 50 },
+        ];
+    }
+    render() {  // метод вывода списка товара каждого элемента массива и создать экземпляр класса GoodsItem и запрашивать его в разметку
+        let listHtml = '';
+        this.goods.forEach(good => {
+            const goodItem = new GoodsItem(good.title, good.price);
+            listHtml += goodItem.render();
+        });
+        document.querySelector('goods-list').innerHTML = listHtml;
+    }
+    getSum() {   // вывести сумму товаров
+        for (let good of this.goods) {
+            sum += item.price;
+        }
+
+    };
+}
+
+const list = new GoodsList();  // чтобы вывести список нужно создать экземпляр
+//класса GoodsList и вызвать для него метод fetchGoods чтобы записать список товара в свойство goods и вызвать метод render
+list.fatchGoods();
+list.render();
+
+
+
