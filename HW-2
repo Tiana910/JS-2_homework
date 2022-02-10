@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>eShop</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-wrap container ">
+            <div class="logo">E-SHOP</div>
+            <button class="cart-button " type="button">Корзина</button>
+        </div>
+
+    </header>
+    <main>
+        <div class="goods-wrp container">
+            <div class="goods-list"></div>
+        </div>
+
+    </main>
+
+
+
+    <script src="homework2.js"></script>
+
+</body>
+
+</html>
+'use strict'
+
+class GoodsItem {   // создаем клас товаров
+    constructor(title, price) {
+        this.title = title;
+        this.price = price;
+    }
+    render() {      // метод возвращает разметку 
+        return `<div class="goods-item">
+    <img src="img/goods2.jpg"<br>
+    <h3>${this.title}</h3>
+    <p>${this.price}</p>
+    <button class="cart-button">Купить</button>
+    </div>`;
+    }
+}
+
+class GoodsList {   // список товаров 
+    constructor() {
+        this.goods = [];
+    }
+    fetсhGoods() {   //метод заполнения списка
+        this.goods = [
+            { title: 'Notebook', price: 2000 },
+            { title: 'Mouse', price: 20 },
+            { title: 'Keyboard', price: 200 },
+            { title: 'Gamepad', price: 50 },
+        ];
+    }
+    render() {  // метод вывода списка товара каждого элемента массива и создать экземпляр класса GoodsItem и запрашивать его в разметку
+        let listHtml = '';
+        this.goods.forEach(good => {
+            const goodItem = new GoodsItem(good.title, good.price);
+            listHtml += goodItem.render();
+        });
+        document.querySelector('.goods-list').innerHTML = listHtml;
+    }
+    getSum() {   // вывести сумму товаров
+        for (let good of this.goods) {
+            sum += item.price;
+            alert(Sum);
+        }
+
+    };
+}
+
+const list = new GoodsList();  // чтобы вывести список нужно создать экземпляр
+//класса GoodsList и вызвать для него метод fetchGoods чтобы записать список товара в свойство goods и вызвать метод render
+list.fetchGoods();
+list.render();
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #fff;
+    font-family: Lato;
+    font-style: normal;
+    font-size: 14px;
+    height: 100%;
+   
+  }
+  h3 {
+      color: black;
+      font-size: 25px;
+      font-weight: 600;
+      padding: 10px;
+} 
+    p {padding: 10px;
+      font-weight: 600;
+      font-size: 20px;
+}
+  
+  .text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #9F9F9F;
+  }
+  
+  .container {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    /* outline: 1px solid red; */
+      }
+  .header {
+    background: #222222;
+    min-height: 75px;
+    width: 100%;
+  }
+  
+  .header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    box-sizing: border-box;
+    
+    
+  }
+  .logo{
+      color: #fff;
+      font-size: 35px;
+      padding: 20px;
+  }
+  .cart-button{
+    padding: 10px 20px;
+    
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #222222;
+  }
+  .cart-button:hover{
+      background: #9F9F9F;
+      color: aliceblue;
+  }
+  
+    .goods-list{
+    display: flex;
+    justify-content: space-between;
+      min-width: 250px;
+      min-height: 250px;
+      margin: 15px;          
+      /* outline: 1px solid red; */
+  }
+ .goods-item{
+  padding: 15px ;
+  display: inline-block;
+  border: 1px solid #222222; 
+  border-radius: 5px;    
+ }
