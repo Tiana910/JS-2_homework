@@ -71,7 +71,7 @@
       color: aliceblue;
   }
   
-    .goods-list{
+    .products{
     display: flex;
     justify-content: space-between;
       min-width: 250px;
